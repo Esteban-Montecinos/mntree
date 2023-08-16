@@ -1,4 +1,3 @@
-import React from 'react'
 import { AuthButtonServer } from '../components/auth-buttton-server'
 
 export default function LoginPage() {
