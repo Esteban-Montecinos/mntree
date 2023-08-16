@@ -4,7 +4,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { GitHubIcon } from "./icons";
 import { useRouter } from "next/navigation";
 
-export function AuthButtonClient({ session }) {
+export function AuthButtonClient({ session = null }) {
   const supabase = createClientComponentClient();
   const router = useRouter();
   const getURL = () => {

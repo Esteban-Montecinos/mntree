@@ -1,7 +1,7 @@
 import React from 'react'
 import PostCard from './post-card'
 
-export default function PostsList({posts}) {
+export default function PostsList({posts = []}) {
   return (
     <>
         {

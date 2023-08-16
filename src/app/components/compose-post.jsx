@@ -5,7 +5,7 @@ import { addPost } from '../actions/add-post-action'
 import { useRef } from 'react'
 
 export function ComposePost ({
-  userAvatarUrl
+  userAvatarUrl = ''
 }) {
   const formRef = useRef(null)
 
