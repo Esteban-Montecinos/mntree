@@ -1,5 +1,0 @@
-{
-    "callback": [{
-      "path": "/auth/callback"
-    }]
-  }
