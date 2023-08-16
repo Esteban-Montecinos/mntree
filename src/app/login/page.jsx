@@ -11,7 +11,7 @@ export default function LoginPage() {
         <p className="text-sm text-muted-foreground">
             Iniciar sesión en tu cuenta
         </p>
-        <AuthButtonServer/>
+        {/*<AuthButtonServer/>*/}
         </div>
     </section>
   )
