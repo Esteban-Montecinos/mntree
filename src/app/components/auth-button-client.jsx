@@ -9,6 +9,7 @@ export function AuthButtonClient({ session }) {
   const router = useRouter();
   const getURL = () => {
     let url =
+      process?.env?.NEXT_PUBLIC_SITE_URL ??
       process?.env?.NEXT_PUBLIC_VERCEL_URL ??
       'https://mntree.vercel.app/auth/callback'
     url = url.includes('https://') ? url : `https://${url}`
