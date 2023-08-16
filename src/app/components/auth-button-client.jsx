@@ -7,11 +7,19 @@ import { useRouter } from "next/navigation";
 export function AuthButtonClient({ session }) {
   const supabase = createClientComponentClient();
   const router = useRouter();
+  const getURL = () => {
+    let url =
+      process?.env?.NEXT_PUBLIC_VERCEL_URL ??
+      'https://mntree.vercel.app/auth/callback'
+    url = url.includes('https://') ? url : `https://${url}`
+    url = url.charAt(url.length - 1) === '/' ? url : `${url}/`
+    return url
+  }
   const handleSignIn = async () => {
     await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: "https://mntree.vercel.app/auth/callback",
+        redirectTo: getURL(),
       },
     });
   };
