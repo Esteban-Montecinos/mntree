@@ -4,6 +4,8 @@ import { cookies } from 'next/headers'
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { revalidatePath } from 'next/cache'
 
+export const dynamic = 'force-dynamic'
+
 export const addPost = async (formData) => {
   const content = formData.get('content')
 

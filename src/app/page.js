@@ -4,6 +4,9 @@ import { AuthButtonServer } from "./components/auth-buttton-server";
 import { redirect } from "next/navigation";
 import { ComposePost } from "./components/compose-post";
 import PostsList from "./components/posts-list";
+
+export const dynamic = 'force-dynamic'
+
 export default async function Home() {
   const supabase = createServerComponentClient({ cookies });
   const {
