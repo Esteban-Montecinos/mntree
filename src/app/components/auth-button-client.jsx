@@ -7,22 +7,11 @@ import { useRouter } from "next/navigation";
 export function AuthButtonClient({ session }) {
   const supabase = createClientComponentClient();
   const router = useRouter();
-  const getURL = () => {
-    let url =
-      process?.env?.NEXT_PUBLIC_SITE_URL ?? // Set this to your site URL in production env.
-      process?.env?.NEXT_PUBLIC_VERCEL_URL ?? // Automatically set by Vercel.
-      'http://localhost:3000/auth/callback'
-    // Make sure to include `https://` when not localhost.
-    url = url.includes('https://') ? url : `https://${url}`
-    // Make sure to include a trailing `/`.
-    url = url.charAt(url.length - 1) === '/' ? url : `${url}/`
-    return url
-  }
   const handleSignIn = async () => {
     await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: getURL(),
+        redirectTo: `${location.origin}/auth/callback`,
       },
     });
   };
