@@ -35,7 +35,7 @@ export function AuthButtonClient({ session }) {
       type="button"
       className="font-light text-neutral-400  text-xs rounded-full p-4 hover:bg-neutral-800 transition-colors"
     >
-      Cerrar sesión @{session?.user?.user_metadata?.user_name}
+      Cerrar sesión @{session === null ? "": session?.user?.user_metadata?.user_name}
     </button>
   );
 }
