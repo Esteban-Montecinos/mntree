@@ -33,9 +33,9 @@ export function AuthButtonClient({ session }) {
     <button
       onClick={handleSignOut}
       type="button"
-      className="bg-neutral-900 text-white rounded-md py-2 px-4 hover:bg-neutral-800 transition-colors sm:text-base text-sm"
+      className="font-light text-neutral-400  text-xs rounded-full p-4 hover:bg-neutral-800 transition-colors"
     >
-      Cerrar sesión
+      Cerrar sesión @{session?.user?.user_metadata?.user_name}
     </button>
   );
 }
