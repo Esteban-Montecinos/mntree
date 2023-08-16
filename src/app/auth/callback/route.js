@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic'
 
 export async function GET(request) {
   try {
-    const requestUrl = new URL(request.url)
+    const requestUrl = new URL(request.url, 'https://mntree.vercel.app')
   const code = requestUrl.searchParams.get('code')
 
   if (code) {
