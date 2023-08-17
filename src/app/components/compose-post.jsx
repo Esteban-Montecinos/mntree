@@ -1,8 +1,9 @@
-import { cookies } from "next/headers";
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
+import Image from "next/image";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"
 
 export function ComposePost({ userAvatarUrl }) {
   const addPost = async (formData) => {
@@ -30,9 +31,11 @@ export function ComposePost({ userAvatarUrl }) {
       action={addPost}
       className="flex flex-row p-3 border-b border-neutral-600 w-full"
     >
-      <img
+      <Image
         className="rounded-full w-10 h-10 object-contain mr-4"
         src={userAvatarUrl}
+        width={48}
+        height={48}
         alt="foto de perfil de GitHub"
       />
       <div className="flex flex-1 flex-col gap-y-4">

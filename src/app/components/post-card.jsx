@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { IconHeart, IconMessageCircle, IconRepeat } from "@tabler/icons-react";
+import Image from "next/image";
 
 export default function PostCard({
   userFullName,
@@ -17,7 +18,13 @@ export default function PostCard({
     <article className="flex flex-row shadow-none bg-transparent hover:bg-neutral-800 transition border-b rounded-none cursor-pointer border-neutral-600 w-full p-2">
       <aside className="flex flex-col w-10 mr-3">
         <Link href={`/${userName}`}>
-          <img className="rounded-full w-10 h-10" src={avatarUrl} />
+          <Image
+            className="rounded-full"
+            width={48}
+            height={48}
+            src={avatarUrl}
+            alt={`Foto de perfil de ${userName}`}
+          />
         </Link>
       </aside>
       <main className="flex-1">
@@ -27,7 +34,8 @@ export default function PostCard({
               {userFullName}
             </span>
             <span className="text-base font-light tracking-tight text-neutral-400">
-              @{userName} · {datePost.toLocaleDateString("es-CL", options)} · {shortTime.format(datePost)}
+              @{userName} · {datePost.toLocaleDateString("es-CL", options)} ·{" "}
+              {shortTime.format(datePost)}
             </span>
           </div>
         </header>
