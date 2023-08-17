@@ -7,6 +7,7 @@ export const dynamic = "force-dynamic";
 export function ComposePost({ userAvatarUrl }) {
   const addPost = async (formData) => {
     'use server'
+
     const content = formData.get("content");
 
     if (content === null) return;
@@ -16,11 +17,12 @@ export function ComposePost({ userAvatarUrl }) {
     const {
       data: { user },
     } = await supabase.auth.getUser();
+
     if (user === null) return;
 
     await supabase.from("posts").insert({ content, user_id: user.id });
 
-    revalidatePath(`/?content=${content.toString()}`);
+    revalidatePath("/");
   };
 
   return (
