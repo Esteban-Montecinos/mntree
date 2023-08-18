@@ -24,7 +24,7 @@ export default async function Home() {
     <main className="flex flex-col items-center min-h-screen bg-neutral-950">
       <section className="flex flex-col items-center w-full max-w-2xl min-h-screen mx-auto border-l border-r border-neutral-600">
         <header className="flex flex-row items-center justify-between w-full p-3 mb-4 border-b border-neutral-600">
-          <h2 className="text-3xl font-semibold text-white">Inicio</h2>
+          <h2 className="text-3xl font-semibold text-white">*MNTree</h2>
           <AuthButtonServer />
         </header>
         <ComposePost userAvatarUrl={session.user?.user_metadata?.avatar_url} />
