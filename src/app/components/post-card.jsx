@@ -19,7 +19,7 @@ export default function PostCard({
   return (
     <article className="flex flex-row w-full p-2 transition bg-transparent border-b rounded-none shadow-none cursor-pointer hover:bg-neutral-800 border-neutral-600">
       <aside className="flex flex-col w-10 mr-3">
-        <Link href={`/${userName}`}>
+        <Link href={`https://github.com/${userName}`} target="_blank">
           <Image
             className="rounded-full"
             width={48}
