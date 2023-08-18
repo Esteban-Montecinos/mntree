@@ -10,7 +10,8 @@ export default function PostsList({posts = []}) {
             id,
             user,
             content,
-            created_at
+            created_at,
+            likes
           } = post
 
           const {
@@ -28,6 +29,8 @@ export default function PostsList({posts = []}) {
               userFullName={userFullName}
               userName={userName}
               createdAt={created_at}
+              likes={likes}
+              post={post}
             />
           )
         })

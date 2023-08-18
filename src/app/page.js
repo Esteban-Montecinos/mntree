@@ -16,10 +16,16 @@ export default async function Home() {
   if (session === null) {
     redirect("/login");
   }
-  const { data: posts } = await supabase
+  const { data } = await supabase
     .from("posts")
-    .select("*, user:users(name,avatar_url,user_name)")
+    .select("*, user:users(name,avatar_url,user_name), likes(*)")
     .order("created_at", { ascending: false });
+  const posts = data.map(post => ({
+    ...post,
+    user_has_liked_post: post?.likes.find(like => like.user_id === session.user.id),
+    likes: post.likes.length,
+  
+  })) ?? []
   return (
     <main className="flex flex-col items-center min-h-screen bg-neutral-950">
       <section className="flex flex-col items-center w-full max-w-2xl min-h-screen mx-auto border-l border-r border-neutral-600">
