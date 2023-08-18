@@ -27,7 +27,7 @@ export default function Likes({ post }) {
   return (
     <button
       onClick={handleLikes}
-      className="flex items-center text-neutral-400 hover:text-pink-500"
+      className={`flex items-center ${ post.user_has_liked_post ? 'text-neutral-400' : 'text-pink-500'}  hover:text-pink-500`}
     >
       {post.likes}
       <span className="p-2 rounded-full hover:bg-pink-500/30">
