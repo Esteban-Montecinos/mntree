@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { ComposePost } from "./components/compose-post";
 import PostsList from "./components/posts-list";
 
-export const dynamic = "force-dynamic"
+export const dynamic = 'force-dynamic'
 
 export default async function Home() {
   const supabase = createServerComponentClient({ cookies });
@@ -21,9 +21,9 @@ export default async function Home() {
     .select("*, user:users(name,avatar_url,user_name)")
     .order("created_at", { ascending: false });
   return (
-    <main className="flex min-h-screen flex-col items-center bg-neutral-950">
-      <section className="flex flex-col items-center w-full max-w-2xl mx-auto border-l border-r border-neutral-600 min-h-screen">
-        <header className="flex flex-row justify-between items-center w-full mb-4 p-3 border-b border-neutral-600">
+    <main className="flex flex-col items-center min-h-screen bg-neutral-950">
+      <section className="flex flex-col items-center w-full max-w-2xl min-h-screen mx-auto border-l border-r border-neutral-600">
+        <header className="flex flex-row items-center justify-between w-full p-3 mb-4 border-b border-neutral-600">
           <h2 className="text-3xl font-semibold text-white">Inicio</h2>
           <AuthButtonServer />
         </header>
