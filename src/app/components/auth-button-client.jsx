@@ -11,7 +11,7 @@ export function AuthButtonClient({ session }) {
     await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: `${location.origin}/auth/callback`,
+        redirectTo: 'https://mntree.vercel.app/auth/callback',
       },
     });
   };
@@ -24,7 +24,7 @@ export function AuthButtonClient({ session }) {
     <button
     onClick={handleSignIn}
       type="button"
-      className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-transparent shadow-sm hover:bg-white hover:text-neutral-900 h-9 px-4 py-2"
+      className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium transition-colors bg-transparent border rounded-md shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border-input hover:bg-white hover:text-neutral-900 h-9"
     >
       <GitHubIcon />
       Continuar con GitHub
@@ -33,7 +33,7 @@ export function AuthButtonClient({ session }) {
     <button
       onClick={handleSignOut}
       type="button"
-      className="font-light text-neutral-400  text-xs rounded-full p-4 hover:bg-neutral-800 transition-colors"
+      className="p-4 text-xs font-light transition-colors rounded-full text-neutral-400 hover:bg-neutral-800"
     >
       Cerrar sesión @{session?.user?.user_metadata?.user_name}
     </button>
