@@ -11,7 +11,7 @@ export function AuthButtonClient({ session }) {
     await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: 'https://mntree.vercel.app/auth/callback',
+        redirectTo: `${location.origin}/auth/callback`,
       },
     });
   };
