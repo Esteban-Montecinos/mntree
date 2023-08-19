@@ -4,7 +4,7 @@ import { cookies } from 'next/headers'
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { revalidatePath } from 'next/cache'
 
-export async function addPost({content}) {
+export async function addPost(content) {
 
   if (content === null) return
 
