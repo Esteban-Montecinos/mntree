@@ -1,34 +1,21 @@
-import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
-import { revalidatePath } from "next/cache";
+"use client";
 import Image from "next/image";
+import { addPost } from "../actions";
+import { useRef } from "react";
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 export function ComposePost({ userAvatarUrl }) {
-  const addPost = async (formData) => {
-    'use server'
-
-    const content = formData.get("content");
-
-    if (content === null) return;
-
-    const supabase = createServerActionClient({ cookies });
-    // revisar si el usuario realmene está autentificado
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    if (user === null) return;
-
-    await supabase.from("posts").insert({ content, user_id: user.id });
-
-    revalidatePath("/");
-  };
+  const formRef = useRef(null);
 
   return (
     <form
-      action={addPost}
+      action={async (formData) => {
+        const content = formData.get("content");
+        formRef.current?.reset();
+        await addPost(content);
+      }}
+      ref={formRef}
       className="flex flex-row w-full p-3 border-b border-neutral-600"
     >
       <Image
