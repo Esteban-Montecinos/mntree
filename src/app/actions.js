@@ -4,9 +4,7 @@ import { cookies } from 'next/headers'
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { revalidatePath } from 'next/cache'
 
-export const dynamic = 'force-dynamic'
-
-export const addPost = async ({content}) => {
+export async function addPost({content}) {
 
   if (content === null) return
 
@@ -17,5 +15,5 @@ export const addPost = async ({content}) => {
 
   await supabase.from('posts').insert({ content, user_id: user.id })
 
-  revalidatePath(`/?content=${content.toString()}`)
+  revalidatePath('/')
 }

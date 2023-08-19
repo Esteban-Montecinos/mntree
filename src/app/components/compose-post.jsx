@@ -1,21 +1,21 @@
-"use client";
+'use client'
 import Image from "next/image";
 import { addPost } from "../actions";
-import { useRef } from "react";
+import { useRef } from 'react'
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 
 export function ComposePost({ userAvatarUrl }) {
-  const formRef = useRef(null);
+  const formRef = useRef(null)
 
   return (
     <form
-      action={async (formData) => {
-        const content = formData.get("content");
-        formRef.current?.reset();
-        await addPost(content);
-      }}
-      ref={formRef}
+       action={async (formData) => {
+        const content = formData.get('content')
+      await addPost(content)
+      formRef.current?.reset()
+    }}
+    ref={formRef}
       className="flex flex-row w-full p-3 border-b border-neutral-600"
     >
       <Image
