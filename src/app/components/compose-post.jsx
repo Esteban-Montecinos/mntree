@@ -6,7 +6,7 @@ import { useRef } from 'react'
 export const dynamic = 'force-dynamic'
 
 export function ComposePost({ userAvatarUrl }) {
-  const formRef = useRef(null)
+  const formRef = useRef()
 
   return (
     <form
