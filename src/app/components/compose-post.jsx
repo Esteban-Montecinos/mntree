@@ -1,21 +1,23 @@
-'use client'
+"use client";
+
 import Image from "next/image";
 import { addPost } from "../actions";
-import { useRef } from 'react'
+import { useRef } from "react";
+import { ComposePostButton } from "./compose-post-button";
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 export function ComposePost({ userAvatarUrl }) {
-  const formRef = useRef()
+  const formRef = useRef();
 
   return (
     <form
-       action={async (formData) => {
-        const content = formData.get('content')
-      await addPost(content)
-      formRef.current?.reset()
-    }}
-    ref={formRef}
+      action={async (formData) => {
+        const content = formData.get("content");
+        await addPost(content);
+        formRef.current?.reset();
+      }}
+      ref={formRef}
       className="flex flex-row w-full p-3 border-b border-neutral-600"
     >
       <Image
@@ -32,12 +34,7 @@ export function ComposePost({ userAvatarUrl }) {
           className="w-full text-xl text-white placeholder-gray-400 bg-transparent border-b outline-none resize-none border-neutral-600"
           placeholder="¿Qué estás pensando?..."
         ></textarea>
-        <button
-          type="submit"
-          className="self-end px-5 py-2 text-sm font-bold text-white rounded-full bg-neutral-900 disabled:opacity-40 disabled:pointer-events-none"
-        >
-          Postear
-        </button>
+        <ComposePostButton />
       </div>
     </form>
   );
