@@ -30,7 +30,7 @@ export function ComposePost({ userAvatarUrl }) {
           name="content"
           rows={3}
           className="w-full text-xl text-white placeholder-gray-400 bg-transparent border-b outline-none resize-none border-neutral-600"
-          placeholder="¿Qué estas pensando?..."
+          placeholder="¿Qué estás pensando?..."
         ></textarea>
         <button
           type="submit"
