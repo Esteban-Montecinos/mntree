@@ -6,7 +6,7 @@ import { revalidatePath } from 'next/cache'
 
 export const dynamic = 'force-dynamic'
 
-export const addPost = async (content) => {
+export const addPost = async ({content}) => {
 
   if (content === null) return
 
