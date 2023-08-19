@@ -9,11 +9,12 @@ export default function PostCard({
   avatarUrl,
   createdAt,
   content,
-  post
+  post,
+  addOptimisticPost
 }) {
   const datePost = new Date(createdAt);
   const options = { month: "short", day: "numeric" };
-  const shortTime = new Intl.DateTimeFormat("en", {
+  const shortTime = new Intl.DateTimeFormat("es", {
     timeStyle: "short",
   });
   return (
@@ -51,7 +52,7 @@ export default function PostCard({
           <button className="p-2 rounded-full hover:bg-emerald-500/30 hover:text-emerald-500 text-neutral-400">
             <IconRepeat className="w-5 h-5" />
           </button>
-          <Likes post={post}/>
+          <Likes post={post} addOptimisticPost={addOptimisticPost}/>
         </footer>
       </main>
     </article>
