@@ -39,10 +39,10 @@ export default function Likes({ post, addOptimisticPost }) {
       onClick={handleLikes}
       className={`flex items-center ${ post.user_has_liked_post ? 'text-pink-500' : 'text-neutral-400'}  hover:text-pink-500`}
     >
-      {post.likes}
       <span className="p-2 rounded-full hover:bg-pink-500/30">
         <IconHeart className="w-5 h-5" />
       </span>
+      {post.likes}
     </button>
   );
 }

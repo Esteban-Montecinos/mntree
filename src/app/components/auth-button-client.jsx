@@ -1,9 +1,10 @@
 "use client";
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { GitHubIcon } from "./icons";
 import { useRouter } from "next/navigation";
 
+import { IconBrandGithub, IconLogout } from "@tabler/icons-react";
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar} from "@nextui-org/react";
 export function AuthButtonClient({ session }) {
   const supabase = createClientComponentClient();
   const router = useRouter();
@@ -26,16 +27,31 @@ export function AuthButtonClient({ session }) {
       type="button"
       className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium transition-colors bg-transparent border rounded-md shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border-input hover:bg-white hover:text-neutral-900 h-9"
     >
-      <GitHubIcon />
+      <IconBrandGithub className="w-4 h-4 mr-2"/>
       Continuar con GitHub
     </button>
   ) : (
-    <button
-      onClick={handleSignOut}
-      type="button"
-      className="p-4 text-xs font-light transition-colors rounded-full text-neutral-400 hover:bg-neutral-800"
-    >
-      Cerrar sesión @{session?.user?.user_metadata?.user_name}
-    </button>
+    <Dropdown>
+    <DropdownTrigger>
+    <div className="flex p-2 text-xs font-light transition-colors rounded-full cursor-pointer text-neutral-400 hover:bg-neutral-800">
+    <Avatar
+        className="object-contain w-10 h-10 rounded-full sm:mr-4"
+        src={session?.user?.user_metadata?.avatar_url}
+        width={48}
+        height={48}
+        alt={`foto de perfil de Google de ${session?.user?.user_metadata?.name}`}
+      />
+      <div className="flex-col hidden sm:inline-flex"> 
+        <span className="text-sm text-neutral-200">{session?.user?.user_metadata?.name}</span>
+        <span>{session?.user?.user_metadata?.user_name}</span>
+      </div>
+    </div>
+    </DropdownTrigger>
+    <DropdownMenu aria-label="Acciones del usuario" onAction={() => handleSignOut()}>
+      <DropdownItem key="delete" className="text-danger" color="danger" startContent={<IconLogout className="w-4 h-4"/>}>
+        Cerrar sesión
+      </DropdownItem>
+    </DropdownMenu>
+  </Dropdown>
   );
 }

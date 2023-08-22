@@ -27,14 +27,17 @@ export default async function Home() {
   
   })) ?? []
   return (
-    <main className="flex flex-col items-center min-h-screen bg-neutral-950">
+    <main className="flex flex-col items-center min-h-screen px-2 bg-neutral-950">
       <section className="flex flex-col items-center w-full max-w-2xl min-h-screen mx-auto border-l border-r border-neutral-600">
-        <header className="flex flex-row items-center justify-between w-full p-3 mb-4 border-b border-neutral-600">
-          <h2 className="text-3xl font-semibold text-white">*MNTree</h2>
+        <header className="sticky top-0 z-10 flex flex-row items-center justify-between w-full h-24 p-3 mb-4 border-b bg-neutral-950/80 backdrop-blur-sm border-neutral-600">
+          <h2 className="text-3xl font-semibold text-white">*MNT<span className="hidden sm:inline-flex">ree</span></h2>
           <AuthButtonServer />
         </header>
         <ComposePost userAvatarUrl={session.user?.user_metadata?.avatar_url} />
-        <PostsList posts={posts} />
+        <footer className="flex flex-col w-full mb-24">
+
+        <PostsList posts={posts}/>
+        </footer>
       </section>
     </main>
   );
